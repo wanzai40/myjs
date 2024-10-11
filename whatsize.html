@@ -59,7 +59,7 @@
       while (true) {
         let num = +prompt("请输入1-100间的数字,不玩就输999");
         gun = num
-        if (gun === 999) {
+        if ( gun == '') {
           
           break;
         } else if (num > bigSmail) {
@@ -73,7 +73,7 @@
       }
       
       
-      if (gun===999) {
+      if (gun== '') {
         window.alert("不玩了，再见");
         window.close();
       } else {
