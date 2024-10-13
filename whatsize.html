@@ -84,20 +84,20 @@
       let bigSmail2 = getRandom(1, 100);
       console.log(bigSmail2);
 
-      for (let index = 0; index < 5; index++) {
-        let num2 = +prompt("请输入1-100间的数字,不玩就输999");
-       
+      for (let index = 0; index < 10; index++) {
+        let num2 = +prompt("请输入1-100间的数字,不玩就输999，10次机会");
+        let residue=9-index
        if (num2 === 999) {
           break;
        }else if (num2 > bigSmail2) {
-          alert("猜大了");
+          alert(`猜大了,还剩${residue}次机会`);
         } else if (num2 < bigSmail2) {
-          alert("猜小了");
+          alert(`猜小了,还剩${residue}次机会`);
         } else {
-          alert("猜对了,恭喜你,你真厉害,你真聪明, 你真棒");
+          alert(`猜对了,恭喜你,你真厉害,你真聪明, 你真棒，用了${index}次机会`);
           break;
         }
-        if (index == 4) {
+        if (index == 10) {
           alert("次数用完，游戏结束,low");
         }
       }
