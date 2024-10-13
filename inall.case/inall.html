@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>学车在线首页</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <style></style>
+  </head>
+
+  <body>
+    <!-- 4. box核心内容区域开始 -->
+    <div class="box w">
+      <div class="box-hd">
+        <h3>精品推荐</h3>
+        <a href="#">查看全部</a>
+      </div>
+      <div class="box-bd">
+        <ul class="clearfix">
+          <!-- <li>
+            <a href="#">
+              <img src="images/course01.png" alt="" />
+              <h4>Think PHP 5.0 博客系统实战项目演练</h4>
+              <div class="info">
+                <span>高级</span> • <span>1125</span>人在学习
+              </div>
+            </a>
+          </li> -->
+
+          <script>
+            let data = [
+              {
+                src: "images/Iphone.png",
+                title: "超简陋的-Iphone订单生成",
+                href: "https://wanzai40.github.io/myjs/test1.html",
+                num: 25,
+              },
+              {
+                src: "images/atm.png",
+                title: "超简陋的-模拟ATM机",
+                href: "https://wanzai40.github.io/myjs/atm.html",
+                num: 357,
+              },
+              {
+                src: "images/size.png",
+                title: "超简陋的-猜数字大小",
+                href: "https://wanzai40.github.io/myjs/whatsize.html",
+                num: 22250,
+              },
+              {
+                src: "images/color.png",
+                title: "超简陋的-蹦迪灯效",
+                href: "https://wanzai40.github.io/myjs/randomcolor.html",
+                num: 3889,
+              },
+              {
+                src: "images/year.png",
+                title: "超简陋的-新年祝福",
+                href: "https://wanzai40.github.io/html/year.html",
+                num: 124,
+              },
+              
+            ];
+
+            //跟数组有关系，所以从0开始
+            for (let index = 0; index < data.length; index++) {
+              document.write(`
+                        <li>
+                            <a href=${data[index].href} target="_blank">
+                            <img src=${data[index].src} title="${data[index].title}">
+                               <h4>
+                                ${data[index].title}
+                                </h4>
+                          <div class="info">
+                            <span>高级</span> • <span>${data[index].num}</span>人在学习
+                        </div>
+                    </a>
+                </li>
+                       `);
+            }
+          </script>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
