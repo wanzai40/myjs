@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>随机颜色</title>
+
+    <style>
+       .container {
+        display: flex;
+      }
+      .a {
+        width: 200px;
+        height: 200px;
+       
+      }
+
+      .b {
+        width: 200px;
+        height: 200px;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div class="container">
+        <div class="a"><p>十六进制</p></div>
+        <div class="b"><p>rgb</p></div>
+        <p>默认，即16</p>
+
+
+    <script>
+//--------------------------------------------------------------
+      //定义随机颜色的函数
+      //写= true表示当flag没有传入参数时，默认为true
+      function getRandomColor(flag = true) {
+        if (flag) {
+          let str = "#";
+          let arr = [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "a",
+            "b",
+            "c",
+            "d",
+            "e",
+            "f",
+          ];
+          //用for循环6次，每次随机取一个数，加到str中
+          for (let i = 0; i < 6; i++) {
+            //radom是数组的下标（索引号），所以取值范围是0-15
+            let random = Math.floor(Math.random() * arr.length);
+            str += arr[random];
+          }
+          return str;
+        } else {
+            let r = Math.floor(Math.random() * 256);
+            let g = Math.floor(Math.random() * 256);
+            let b = Math.floor(Math.random() * 256);
+          return `rgb(${r},${g},${b})`;
+        }
+      }
+
+      //调佣函数
+      console.log(getRandomColor());
+      console.log(getRandomColor(false))
+      console.log(getRandomColor(true));
+      
+
+      //调用函数，将返回值赋值给body的背景颜色
+      document.body.style.backgroundColor = getRandomColor();
+//--------------------------------------------------------------
+
+
+
+      //给盒子随机颜色
+      const div = document.querySelector(".a");
+      div.style.backgroundColor = getRandomColor(true);
+      const div2 = document.querySelector(".b");
+      div2.style.backgroundColor = getRandomColor(false);
+
+
+
+
+        // 每秒刷新10次，
+        //使用setInterval函数每100毫秒调用一次匿名函数，
+        //该函数会重新设置<body>、.a和.b元素的背景颜色。
+        setInterval(() => {
+             document.body.style.backgroundColor = getRandomColor();
+             div.style.backgroundColor = getRandomColor(true);
+             div2.style.backgroundColor = getRandomColor(false);
+  }, 100);
+    </script>
+  </body>
+</html>
