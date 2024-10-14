@@ -24,12 +24,11 @@
   </head>
   <body>
     <div class="container">
-        <div class="a"><p>十六进制</p></div>
-        <div class="b"><p>rgb</p></div>
-        <p>默认，即16</p>
+        
 
 
     <script>
+   
 //--------------------------------------------------------------
       //定义随机颜色的函数
       //写= true表示当flag没有传入参数时，默认为true
@@ -69,34 +68,53 @@
         }
       }
 
+      document.write(`
+        <div class="a"><p></p></div>
+        <div class="b"><p></p></div>
+        `)
+
       //调佣函数
-      console.log(getRandomColor());
-      console.log(getRandomColor(false))
-      console.log(getRandomColor(true));
+      // console.log(getRandomColor());
+      // console.log(getRandomColor(false))
+      // console.log(getRandomColor(true));
       
 
       //调用函数，将返回值赋值给body的背景颜色
-      document.body.style.backgroundColor = getRandomColor();
+      // document.body.style.backgroundColor = getRandomColor();
 //--------------------------------------------------------------
 
 
 
-      //给盒子随机颜色
+      //声明变量，获取div元素.a和div2元素.b
       const div = document.querySelector(".a");
-      div.style.backgroundColor = getRandomColor(true);
+      // div.style.backgroundColor = getRandomColor(true);
       const div2 = document.querySelector(".b");
-      div2.style.backgroundColor = getRandomColor(false);
+      // div2.style.backgroundColor = getRandomColor(false);
+    
 
-
+    
 
 
         // 每秒刷新10次，
         //使用setInterval函数每100毫秒调用一次匿名函数，
         //该函数会重新设置<body>、.a和.b元素的背景颜色。
         setInterval(() => {
+
+          //声明变量p1和p2，分别调用getRandomColor函数，方便给下面的改颜色和文字使用，同时确保一样的
+          let p1 = getRandomColor(true);
+          let p2 = getRandomColor(false);
+
              document.body.style.backgroundColor = getRandomColor();
-             div.style.backgroundColor = getRandomColor(true);
-             div2.style.backgroundColor = getRandomColor(false);
+             div.style.backgroundColor = p1
+             div2.style.backgroundColor = p2
+
+             //使用querySelector方法获取<div>元素中的<p>元素，
+             //并将随机颜色值赋值给<p>元素的textContent属性。
+             //
+             
+             div.querySelector('p').textContent = p1
+             div2.querySelector('p').textContent = p2
+             
   }, 100);
     </script>
   </body>
