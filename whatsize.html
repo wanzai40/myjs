@@ -75,7 +75,7 @@
       
       if (gun===999 || gun == '') {
         window.alert("不玩了，再见");
-        window.close();
+        //window.close();
       } else {
         alert("再来一轮，有勇气？");
 
@@ -94,10 +94,10 @@
         } else if (num2 < bigSmail2) {
           alert(`猜小了,还剩${residue}次机会`);
         } else {
-          alert(`猜对了,恭喜你,你真厉害,你真聪明, 你真棒，用了${index}次机会`);
+          alert(`猜对了,恭喜你,你真厉害,你真聪明, 你真棒，用了${index+1}次机会`);
           break;
         }
-        if (index == 10) {
+        if (index == 10 || residue==0) {
           alert("次数用完，游戏结束,low");
         }
       }
