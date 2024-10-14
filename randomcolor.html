@@ -71,6 +71,7 @@
       document.write(`
         <div class="a"><p></p></div>
         <div class="b"><p></p></div>
+        <p id ="bgp"></p>
         `)
 
       //调佣函数
@@ -90,7 +91,7 @@
       // div.style.backgroundColor = getRandomColor(true);
       const div2 = document.querySelector(".b");
       // div2.style.backgroundColor = getRandomColor(false);
-    
+      
 
     
 
@@ -103,8 +104,9 @@
           //声明变量p1和p2，分别调用getRandomColor函数，方便给下面的改颜色和文字使用，同时确保一样的
           let p1 = getRandomColor(true);
           let p2 = getRandomColor(false);
+          let bg= getRandomColor();
 
-             document.body.style.backgroundColor = getRandomColor();
+             document.body.style.backgroundColor = bg;
              div.style.backgroundColor = p1
              div2.style.backgroundColor = p2
 
@@ -114,6 +116,7 @@
              
              div.querySelector('p').textContent = p1
              div2.querySelector('p').textContent = p2
+             bgp.textContent = bg
              
   }, 100);
     </script>
