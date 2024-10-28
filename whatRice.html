@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>干饭点菜</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      h2 {
+        text-align: center;
+      }
+
+      p {
+          text-align: center;
+          font-size: 25px;
+          position: relative;
+          top: 23px;
+      }
+
+      .box {
+        width: 360px;
+        margin: 50px auto;
+        display: flex;
+        font-size: 25px;
+        line-height: 40px;
+        text-align: center;
+      }
+
+      .qs {
+        width: 450px;
+        height: 40px;
+        color: red;
+      }
+
+      .btns {
+        text-align: center;
+      }
+
+      .btns button {
+        width: 120px;
+        height: 35px;
+        margin: 0 50px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>随机干饭</h2>
+    <p>吃：</p>
+    <div class="box">
+      
+      <div class="qs">这里显示菜名</div>
+    </div>
+    <div class="btns">
+      <button class="start">开始</button>
+      <button class="end">结束</button>
+    </div>
+
+    <script>
+      // 数据数组
+      const arr = ["火锅", "烧烤", "麻辣烫","麻辣香锅","中百罗森","泡面", '炸鸡', '披萨', '寿司', '汉堡', '拉面', '奶茶', '冰淇淋', '煎饼果子', '肉夹馍', '凉皮', '米线', '薯条', '炸串', '烤冷面', '章鱼小丸子', '蛋挞', '炒年糕', '烤鱼', '酸菜鱼', '黄焖鸡米饭', '石锅拌饭', '鸡排', '烤鸡翅', '牛肉面', '羊肉串', '芝士蛋糕']
+
+      let timeId = 0; //在外面声明，因为在函数里面，是局部变量
+      let random = 0; //同上
+      const qs = document.querySelector(".qs");
+      const start = document.querySelector(".start");
+      const end = document.querySelector(".end");
+      end.disabled = true
+      //点击开始的事件
+      start.addEventListener("click", function () {
+        end.disabled = false
+        start.disabled = true;
+        start.innerHTML = "随机中";
+        end.innerHTML = "暂停";
+        //定时器
+        timeId = setInterval(() => {
+          //随机数
+          random = parseInt(Math.random() * arr.length);
+          qs.innerHTML = arr[random];
+        }, 60);
+
+        //抽完了，禁用按钮
+        if (arr.length === 1) {
+            for(let i =0;i<1;i++){
+        arr[i]= arr[i]+' ， 最后一个了？'
+      }
+        }
+        
+
+        if (arr.length === 0) {
+          arr.push("吃什么吃，没有了，别吃了");
+          end.disabled = start.disabled = true;
+          clearInterval(timeId);
+
+        }
+      });
+
+      end.addEventListener("click", function () {
+        end.disabled = true
+        start.disabled = false;
+        end.innerHTML = "暂停中";
+        start.innerHTML = "继续";
+        clearInterval(timeId);
+        arr.splice(random, 1); //暂停一个删一个
+        console.log(arr);
+      });
+    </script>
+  </body>
+</html>
