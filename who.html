@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>随机男团 --@YuQing</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        margin-top: 280px;
+      }
+      
+      .time  {
+        position: absolute;
+        top: 60px;
+        
+        /* white-space: 100px;
+        height: 60px; */
+      }
+
+      .thetime {
+        width: 150px;
+        height: 40px;
+        
+        /* line-height: 40px; */
+        font-size: 15px;
+        /* margin: 10px; */
+      }
+
+      h2 {
+        text-align: center;
+        font-size: 40px;
+        text-emphasis: "⭐";
+     font-weight: 600; 
+    font-family: '宋体';
+      }
+
+      p {
+        text-align: center;
+        font-size: 25px;
+        position: relative;
+        top: 23px;
+      }
+
+      .box {
+        width: 360px;
+        margin: 50px auto;
+        display: flex;
+        font-size: 25px;
+        line-height: 40px;
+        text-align: center;
+      }
+
+      .qs {
+        width: 450px;
+        height: 40px;
+        color: red;
+      }
+
+      .btns {
+        text-align: center;
+      }
+
+      .btns button {
+        width: 135px;
+        height: 50px;
+        margin: 0 50px;
+        font-size: 19px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="time"><p class="thetime"></p></div>
+    <h2>现在去找</h2>
+    <p>Ta吧:</p>
+    <div class="box">
+      <div class="qs">who呢 ？</div>
+    </div>
+    <div class="btns">
+      <button class="start">开始</button>
+      <button class="end">结束</button>
+    </div>
+
+    <script>
+      // 数据数组
+      const arr = ['祁煜', '黎深', '沈星回', '秦彻', '夏以昼', '周棋洛', '卓娅', '仆人', '枫原万叶', '魈', '欧洛伦', '芙宁娜', '顾子尧', '林致', '乔殊', '夏予扬', '柏闻', '季少一', '江恪', '许向安', '许向宁', '陈齐', '拓跋煜', '钟无相', '吴亥', '尹重', '李睿', '钟离', '艾尔海森', '卡维', '那维莱特', '温迪']
+
+      let timeId = 0; //在外面声明，因为在函数里面，是局部变量
+      let random = 0; //同上
+      const qs = document.querySelector(".qs");
+      const start = document.querySelector(".start");
+      const end = document.querySelector(".end");
+      end.disabled = true;
+      //点击开始的事件
+      start.addEventListener("click", function () {
+        end.disabled = false;
+        start.disabled = true;
+        start.innerHTML = "随机中";
+        end.innerHTML = "暂停";
+        //定时器
+        timeId = setInterval(() => {
+          //随机数
+          random = parseInt(Math.random() * arr.length);
+          qs.innerHTML = '❤️'+arr[random]+'❤️';
+        }, 60);
+
+        //抽完了，禁用按钮
+        if (arr.length === 1) {
+          for (let i = 0; i < 1; i++) {
+            arr[i] = arr[i] + '<br>' +"最后一个了？";
+          }
+          start.innerHTML = "再继续";
+        }
+
+        if (arr.length === 0) {
+          qs.innerHTML = "找什么找，没有了，别找了";
+          end.disabled = start.disabled = true;
+          clearInterval(timeId);
+          end.innerHTML = "结束了";
+          start.innerHTML = "结束了";
+        }
+      });
+
+      end.addEventListener("click", function () {
+        end.disabled = true;
+        start.disabled = false;
+        end.innerHTML = "暂停中";
+        if (arr.length === 1) {
+          start.innerHTML = "神之一手";
+        } else {
+          start.innerHTML = "继续";
+        }
+        clearInterval(timeId);
+        arr.splice(random, 1); //暂停一个删一个
+        console.log(arr);
+      });
+      
+      //时间
+      const time = document.querySelector('.time p')
+      setInterval(function () {
+        const date = new Date()
+        let timetime = date.toLocaleString()
+        time.innerHTML = `都<br><b>${timetime}</b><br>还不去找Ta`
+          
+        }, 1);
+    </script>
+  </body>
+</html>
