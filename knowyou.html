@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>个人信息问卷</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-family: Arial, sans-serif;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .download-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 20px 0;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+        }
+        .download-btn:hover {
+            background-color: #45a049;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>我要了解你</h1>
+        <button class="download-btn" onclick="exportToWord()">导出为Word文档</button>
+        
+        <table id="questionnaire">
+            <thead>
+                <tr>
+                    <th>问题</th>
+                    <th>回答</th>
+                </tr>
+                <tr>
+                    <th colspan="1" style="text-align: center;">我想了解你</th>
+                    <th colspan="1" style="text-align: center;">我愿意真正的了解</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 表格内容与之前相同 -->
+               
+                <tr>
+                    <td>我好奇你的年龄</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>你的身高</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>你的体型</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>你的血型</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>你的发质</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>你的发色</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>你的皮肤</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>你的生日</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>你的MBTI</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>你的人格类型</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>你的缺点</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>你的情史</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>你的过去</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>你的家庭</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>你的三观</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>你的未来规划</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <th colspan="2">喜好</th>
+                </tr>
+                <tr>
+                    <td>喜欢的颜色</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>喜欢的穿搭风格</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>喜欢的歌曲</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>喜欢的歌手</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>喜欢的照片</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>喜欢的书</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>喜欢的作家</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>喜欢的电影</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>喜欢的动漫</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>喜欢的角色</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>喜欢的ip</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>喜欢的博主</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>喜欢的爱豆</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>喜欢的季节</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>喜欢的天气</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>喜欢的城市</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>喜欢的国家</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>喜欢的花</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>喜欢的语种</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>喜欢的小动物</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>喜欢的菜式</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>喜欢的食物</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                <td>喜欢的风景</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                
+                <tr>
+                    <td>喜欢的文化</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>喜欢的朋友</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>喜欢的拍照姿势</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>喜欢的运动方式</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>喜欢的伴侣类型等等</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <th colspan="2">不喜欢的事物</th>
+                </tr>
+                <tr>
+                    <td>好奇你反感的食物</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>你反感的人</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>你反感的行为</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>你反感的类型</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>你反感的规矩</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>你反感的圈子</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>以及为什么会反感</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <th colspan="2">其他偏好</th>
+                </tr>
+                <tr>
+                    <td>好奇你是短发还是长发</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>好奇你喜欢吃荤还是素</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>好奇你喜欢晴天还是雨天</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>好奇你喜欢白天还是黑夜</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>好奇你喜欢甜口还是酸口又或是辣口</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>好奇你喜欢喝奶茶还是咖啡</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>好奇你喜欢喝酸奶还是牛奶</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>好奇你喜欢兜风还是喜欢散步</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>好奇你的输入法是9键还是26键</td>
+                    <td><input type="text"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function exportToWord() {
+            // 获取表格内容
+            const table = document.getElementById("questionnaire");
+            const rows = table.getElementsByTagName("tr");
+            
+            // 创建Word文档内容
+            let wordContent = `
+            <html xmlns:o="urn:schemas-microsoft-com:office:office" 
+                  xmlns:w="urn:schemas-microsoft-com:office:word" 
+                  xmlns="http://www.w3.org/TR/REC-html40">
+            <head>
+                <meta charset="UTF-8">
+                <title>个人信息问卷</title>
+                <style>
+                    table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        font-family: Arial, sans-serif;
+                    }
+                    th, td {
+                        border: 1px solid #dddddd;
+                        padding: 8px;
+                        text-align: left;
+                    }
+                    th {
+                        background-color: #f2f2f2;
+                        font-weight: bold;
+                    }
+                    .section-header {
+                        background-color: #e6e6e6;
+                        font-weight: bold;
+                    }
+                </style>
+            </head>
+            <body>
+                <h1>个人信息问卷</h1>
+                <table>
+            `;
+            
+            // 添加表格行
+            for (let i = 0; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName(i === 0 ? "th" : "td");
+                
+                // 处理表头行
+                if (i < 2) {
+                    wordContent += "<tr>";
+                    for (let j = 0; j < cells.length; j++) {
+                        wordContent += `<th>${cells[j].textContent}</th>`;
+                    }
+                    wordContent += "</tr>";
+                    continue;
+                }
+             
