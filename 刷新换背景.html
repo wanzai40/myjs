@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            background-image: url(./images/desktop_1.jpg) no-repeat center/cover;/*//不平铺，锤子靠上，水平居中，覆盖整个body*/
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function getRandom(n,m){
+            return Math.floor(Math.random()*(m-n+1)+n)
+        }
+
+        const randomNum = getRandom(1,10)
+        document.body.style.backgroundImage = `url(./images/desktop_${randomNum}.jpg`
+    </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <title></title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        border: 1px solid #c0c0c0;
+        width: 500px;
+        margin: 100px auto;
+        text-align: center;
+      }
+
+      th {
+        background-color: #09c;
+        font: bold 16px "微软雅黑";
+        color: #fff;
+        height: 24px;
+      }
+
+      td {
+        border: 1px solid #d0d0d0;
+        color: #404060;
+        padding: 10px;
+      }
+
+      .allCheck {
+        width: 80px;
+      }
+      input {
+        width: 50px;
+        height: 50px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <table>
+      <tr>
+        <th class="allCheck">
+          <input type="checkbox" name="" id="checkAll" />
+          <span class="all">全选</span>
+        </th>
+        <th>商品</th>
+        <th>商家</th>
+        <th>价格</th>
+      </tr>
+      <tr>
+        <td>
+          <input type="checkbox" name="check" class="ck" />
+        </td>
+        <td>小米手机</td>
+        <td>小米</td>
+        <td>￥1999</td>
+      </tr>
+      <tr>
+        <td>
+          <input type="checkbox" name="check" class="ck" />
+        </td>
+        <td>小米净水器</td>
+        <td>小米</td>
+        <td>￥4999</td>
+      </tr>
+      <tr>
+        <td>
+          <input type="checkbox" name="check" class="ck" />
+        </td>
+        <td>小米电视</td>
+        <td>小米</td>
+        <td>￥5999</td>
+      </tr>
+    </table>
+    <script>
+      const ckAll = document.querySelector("#checkAll");
+      const ck_s = document.querySelectorAll(".ck");
+
+      //ckALL的点击事件
+      ckAll.addEventListener("click", function () {
+        // console.log(ckAll.checked);
+        //遍历所有小cj，让小ck的checked = 大ck的checked
+        for (let i = 0; i < ck_s.length; i++) {
+          ck_s[i].checked = ckAll.checked;
+        }
+      });
+
+      //选3个小的则ckAll勾选
+      for (let i = 0; i < ck_s.length; i++) {      //通过循环为每个小ck添加点击事件然后并判断被√选中的个数
+        //每个小的，点击事件
+        ck_s[i].addEventListener('click',function(){
+            // console.log(document.querySelectorAll('.ck:checked').length);     小复选框被选中的个数
+            // console.log(document.querySelectorAll('.ck:checked').length===ck_s.length);    小复选框被选中的个数 = ck_s的个数（3个）吗，true、flase
+            // ckAll.checked=true     ckall是否选中吗？ = true  是
+            //一定要写到点击的里面，因为每次点击要获取最新的的个数
+            ckAll.checked=document.querySelectorAll('.ck:checked').length===ck_s.length
+            
+        })
+        
+      }
+    </script>
+  </body>
+</html>

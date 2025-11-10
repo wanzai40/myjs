@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="./images/1.webp" alt="图片" title="美女">
+
+    <script>
+    /////////////////////////////////////////////////////////////
+        // // 1.获取元素
+        // const img = document.querySelector('img');
+        // //2.修改
+        // img.src = './images/2.webp';
+        // img.title = '帅哥';
+        // img.alt = '帅哥';
+    /////////////////////////////////////////////////////////////
+        //随机函数
+        function getRandom(min,max){
+            return Math.floor(Math.random()*(max-min+1))+min;
+        }
+        //获取图片
+        const img = document.querySelector('img');
+        //随机得到序号
+        const random = getRandom(1,6) 
+        //更换
+        img.src = `./images/${random}.webp`;
+    </script>
+</body>
+</html>

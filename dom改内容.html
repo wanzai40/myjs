@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="box1">123456</div>
+    <div class="box2">7890</div>
+
+    <script>
+        // 1-1.获取元素
+        const box1 = document.querySelector('.box1')
+        // 1-2.修改内容
+        box1.innerText = 'hello world'
+
+        // 2-1.获取元素
+        const box2 = document.querySelector('.box2')
+        // 2-2.修改内容,,HTML可以识别标签
+        box2.innerHTML = '<h1>hello world</h1>'
+    </script>
+</body>
+</html>

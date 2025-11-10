@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box{
+            border: 5px solid red;
+        }
+
+        .b1{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">123456789</div>
+
+    <script>
+        const box = document.querySelector('.box');
+        //追加类
+        box.classList.add('b1');
+        //删除类
+        // box.classList.remove('box');
+        //切换类,有则删除，无则添加
+        // box.classList.toggle('b1');
+    </script>
+</body>
+</html>

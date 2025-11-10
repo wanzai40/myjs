@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="dhl">导航栏</p>
+
+    <ul class="nav">
+      <li>123</li>
+      <li>abc</li>
+      <li>===</li>
+    </ul>
+
+    <script>
+
+        //获取元素，all获取的是伪数组
+        const lis = document.querySelectorAll('.nav li');//.nav 下的li
+        console.log(lis); //伪数组
+        //for遍历,拿到每个对象
+        for (let i = 0; i < lis.length; i++) {
+            console.log(lis[i]); //拿到每个li对象
+            
+        }
+       lis[1].style.color = 'red';//改变第二个li的颜色
+
+        ////////////////////////////////////////////////
+        //我要获取第一个li
+        const fli = document.querySelector('ul li:first-child');
+        console.log(fli);
+
+        //我要获取最后一个li
+        const lli = document.querySelector('ul li:last-child');
+        console.log(lli);
+
+        //我要获取第二个li
+        const sli = document.querySelector('ul li:nth-child(2)');
+        console.log(sli);
+
+        //用P标签举例
+        //当只有一个元素时用All获取过来的也是伪数组，
+        //想进行操作直接p[0]即可
+        const p = document.querySelectorAll('#dhl');
+        p[0].style.color = 'red';
+        
+    </script>
+  </body>
+</html>

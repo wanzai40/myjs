@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" value="飞飞飞">
+    <!-- ///////////////////////////////////////////// -->
+
+    <input type="checkbox">
+
+    <button>点击</button>
+    <script>
+        // 获取表单元素
+        const uname = document.querySelector('input');
+        //获取值，获取表单里面的值，，，用的  表单.value
+        console.log(uname.value);
+
+        //设置表单的值，用的  表单.value = '值'
+        uname.value = '得得得';
+        //表单的value属性，可以获取表单的值，也可以设置表单的值
+
+        //表单的type属性，可以获取表单的类型，也可以设置表单的类型
+        console.log(uname.type);
+        //type=password为密码框，type=text为文本框
+        uname.type = 'password';
+
+    ///////////////////////////////////////////////////////////////
+
+        //获取复选框的选中状态，用的  表单.checked
+        const chek = document.querySelector('input:nth-child(2)');
+        chek.checked = true;
+
+    ////////////////////////////////////////////////////////////////
+
+        //获取按钮，用的  document.querySelector('button')
+        const btn = document.querySelector('button');
+        btn.disabled = true;//禁用按钮
+    </script>
+</body>
+</html>

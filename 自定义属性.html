@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div data-id="123" data-aaa="wewew">mm</div>
+    <div>nn</div>
+    <div>bb</div>
+    <div>vv</div>
+    <div>cc</div>
+
+    <script>
+        //获取
+        const mm = document.querySelector('div');
+        console.log(mm.dataset);//dataset: 自定义属性集合
+        console.log(mm.dataset.id);//123
+        console.log(mm.dataset.aaa);//wewew
+        
+        
+        
+    </script>
+</body>
+</html>

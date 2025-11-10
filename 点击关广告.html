@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .adbox {
+      position: relative;
+      width: 1000px;
+      height: 200px;
+      background-image: url(./images/desktop_10.jpg);
+      margin: 100px auto;
+      text-align: center;
+      font-size: 50px;
+      line-height: 200px;
+      font-weight: 700;
+    }
+
+    .closebox {
+      position: absolute;
+      right: 20px;
+      top: 10px;
+      width: 50px;
+      height: 50px;
+      background-color: rgb(255, 0, 0);
+      text-align: center;
+      line-height: 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="adbox">
+    我是广告
+    <div class="closebox">X</div>
+  </div>
+  <script>
+    // 1. 获取事件源
+    const guanbi = document.querySelector('.closebox')
+    //  关闭的是大盒子
+    const ad = document.querySelector('.adbox')
+    // 2. 事件侦听
+    guanbi.addEventListener('click', function () {
+      ad.style.display = 'none'
+    })
+  </script>
+</body>
+
+</html>

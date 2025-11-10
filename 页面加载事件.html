@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //等待页面所有资源加载完后再执行
+        window.addEventListener('load',function(){
+            const btn = document.querySelector('button')
+            btn.addEventListener('click',function(){
+                alert(123456)
+            })
+        })
+        // 、、、、、、、、、、、、、、、、、、、、、
+        //不用等资源完全加载完成就可以点击什么的
+        document.addEventListener('DOMContentLoaded',function(){
+            const btn = document.querySelector('button')
+            btn.addEventListener('click',function(){
+                alert(123456)
+            })
+        })
+    </script>
+</head>
+<body>
+    <button>dainji</button>
+</body>
+</html>

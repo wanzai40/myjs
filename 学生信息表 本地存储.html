@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>学生信息管理</title>
+  <link rel="stylesheet" href="student-css/index.css" />
+</head>
+
+<body>
+  <h1>新增学员</h1>
+  <form class="info" autocomplete="off">
+    姓名：<input type="text" class="uname" name="uname" placeholder="name"/>
+    年龄：<input type="text" class="age" name="age" placeholder="age"/>
+    性别:
+    <select name="gender" class="gender">
+      <option value="未知">未知</option>
+      <option value="男">男</option>
+      <option value="女">女</option>
+    </select>
+    薪资：<input type="text" class="salary" name="salary" placeholder="salary"/>
+    城市：<select name="city" class="city">
+      <option value="地球">地球</option>
+      <option value="北京">北京</option>
+      <option value="上海">上海</option>
+      <option value="广州">广州</option>
+      <option value="深圳">深圳</option>
+      <option value="曹县">曹县</option>
+    </select>
+    <button class="add">录入</button>
+  </form>
+
+  <p style="color: red;font-size: 18px;text-align: center;display: none;">输入内容不能为空</p>
+
+  <h1>表单</h1>
+  
+  <table><thead><th style="background-color: #cfe5ff7c;border: 0PX;"><div  style="width: 123px;margin-left: 640px;color: #004085a1;font-weight: 400;font-size: 16PX;">共有<span>0</span>条记录</div></th></table></thead><br>
+  <table>
+    <thead>
+      <tr>
+        <th>学号</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+        <th>薪资</th>
+        <th>城市</th>
+        <th>录入时间</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 
+        <tr>
+          <td>1001</td>
+          <td>欧阳霸天</td>
+          <td>19</td>
+          <td>男</td>
+          <td>15000</td>
+          <td>上海</td>
+          <td>
+            <a href="javascript:">删除</a>
+          </td>
+        </tr> 
+        -->
+    </tbody>
+  </table>
+  <script>
+    // //参考的数据
+    // const initData = [
+    //   {
+    //     stuid:1,
+    //     uname:'打',
+    //     age:10,
+    //     gender:'难',
+    //     salary:30000,
+    //     city:'cc'
+    //   }
+    // ]
+
+    //把上面的存到本地存储里
+    //,JSON.stringify(）  转换成JSON字符串
+    // localStorage.setItem('data',JSON.stringify(initData))   //这个呢，我们就把这个数据的key，统一叫data
+    //从本地存储里取出来，同时把格式转化回来  复杂数据类型 ....如果没有数组则用空字符串代替  (用了逻辑中断)
+    const arr = JSON.parse(localStorage.getItem('data')) || []
+    // console.log(arr);
+    //////////////////////////////
+    const tbody = document.querySelector('tbody')
+   
+        // 封装函数
+    function render() {
+      //利用map遍历数组，然后把return的返回值弄为tr的数组
+        //map里面有一个参数ele，，ele是我们的数组元素   ${ele.stuid} 是 ele这个对象里面的stuid
+      const trArr =  arr.map(function(ele,index){
+        return`
+          <tr>
+            <td>${ele.stuid}</td>
+            <td>${ele.uname}</td>
+            <td>${ele.age}</td>
+            <td>${ele.gender}</td>
+            <td>${ele.salary}</td>
+            <td>${ele.city}</td>
+            <td>${ele.time}</td>
+            <td>
+              <a href="javascript:" data-id="${index}">删除</a>
+            </td>
+          </tr> 
+          `
+      })
+      //把突然trArr数组转化成字符串，用join。。。。然后追加给tbody
+      //如果想没有缝隙就写个空字符串'' -> join('')  
+      tbody.innerHTML = trArr.join('')  
+
+      //共有几条
+      document.querySelector('span').innerHTML = arr.length
+    }
+    render()    //调用函数
+
+    //添加
+    const uname = document.querySelector('.uname')
+    const age = document.querySelector('.age')
+    const gender = document.querySelector('.gender')
+    const salary = document.querySelector('.salary')
+    const city = document.querySelector('.city')
+    const info = document.querySelector('.info')
+    info.addEventListener('submit',function(e){
+      //阻止form表单注册提交事件
+      e.preventDefault()
+      //非空判断    if要是真的才可以输出，然后表单内容不输入就是假，假不输出，所以加！，加了之后表单没有内容就是真，真的话if就会输出，然后又用了或，只要一个真就都是真，只要一个没有内容就会输出
+      if (!uname.value || !age.value || !salary.value) {
+            return document.querySelector('p').style.display = 'block' 
+           info.style.marginBottom = '30px';
+        }else{
+          document.querySelector('p').style.display = 'none' ,
+           info.style.marginBottom = '';
+        }
+
+        //把用户从form表单里写的数据追加给arr数组
+          //stuid的bug解决：数组最后一条数据的stuid + 1
+        arr.push({
+        stuid:arr.length ? arr[arr.length - 1].stuid + 1 : 1,     //你有arr.length吗，如果有则...没有则把1给stuid
+        uname:uname.value,
+        age:age.value,
+        gender:gender.value,
+        salary:salary.value,
+        city:city.value,
+        time:new Date().toLocaleString()   //new Date() 为 实例化对象
+        })
+
+        //调用函数
+        render()
+        //重置表单
+        this.reset()
+        //把数组重新存入本地存储，，转换josn
+        localStorage.setItem('data',JSON.stringify(arr))
+    })
+
+    //删除
+    //用事件委托。。。因为有新增的数据
+    tbody.addEventListener('click',function(e){
+      //判断是不是点的是A
+          //如果我的事件对象的target的tagName 等于了A,A是链接
+      if (e.target.tagName === 'A') {
+
+        //得到当前点击A 的索引号   。 渲染数据的时候，动态给A添加自定义属性，列如：data-id="${index}" \\data-id="0"
+        //根据map每次遍历arr数组时更新的index，利用sp删除
+        arr.splice(e.target.dataset.id, 1)
+
+        //重新渲染
+        render()
+
+        //把最新的arr存到本地里
+        localStorage.setItem('data',JSON.stringify(arr))
+      }
+
+    })
+
+  </script>
+
+</body>
+
+</html>

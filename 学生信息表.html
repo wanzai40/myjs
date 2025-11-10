@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>学生信息管理</title>
+  <link rel="stylesheet" href="student-css/index.css" />
+</head>
+
+<body>
+  <h1>新增学员</h1>
+  <form class="info" autocomplete="off">
+    姓名：<input type="text" class="uname" name="uname" />
+    年龄：<input type="text" class="age" name="age" />
+    性别:
+    <select name="gender" class="gender">
+      <option value="未知">未知</option>
+      <option value="男">男</option>
+      <option value="女">女</option>
+    </select>
+    薪资：<input type="text" class="salary" name="salary" />
+    城市：<select name="city" class="city">
+      <option value="地球">地球</option>
+      <option value="北京">北京</option>
+      <option value="上海">上海</option>
+      <option value="广州">广州</option>
+      <option value="深圳">深圳</option>
+      <option value="曹县">曹县</option>
+    </select>
+    <button class="add">录入</button>
+  </form>
+
+  <p style="color: red;font-size: 18px;text-align: center;display: none;">输入内容不能为空</p>
+
+  <h1>表单</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>学号</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+        <th>薪资</th>
+        <th>城市</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 
+        <tr>
+          <td>1001</td>
+          <td>欧阳霸天</td>
+          <td>19</td>
+          <td>男</td>
+          <td>15000</td>
+          <td>上海</td>
+          <td>
+            <a href="javascript:">删除</a>
+          </td>
+        </tr> 
+        -->
+    </tbody>
+  </table>
+  <script>
+    //获取
+    const uname = document.querySelector('.uname')
+    const age = document.querySelector('.age')
+    const gender = document.querySelector('.gender')
+    const salary = document.querySelector('.salary')
+    const city = document.querySelector('.city')
+    const tbody = document.querySelector('tbody')
+    //获取带有name ->属性<- 的元素
+    const items = document.querySelectorAll('[name]')
+
+    //声明一个空数组，之后的增加 删除都是改这个数组
+    const arr = []
+    //删除后添加后学号重复，重新用let定义个全局变量stuId=1然后把对象obj里的stuId属性的属性值改为stuId++
+    let stuId =1
+    
+    //录入模块
+    //表单提交事件
+    const info = document.querySelector('.info')
+    info.addEventListener('submit',function(e){  //因为是表单，所以不用click
+      //阻止默认行为  不跳转
+      e.preventDefault()
+
+      //表单的非空验证
+      //遍历 循环
+      for (let i = 0; i < items.length; i++) {
+        if (items[i].value ==='') {
+          return document.querySelector('p').style.display = 'block' ,
+           info.style.marginBottom = '30px';
+        }else{
+          document.querySelector('p').style.display = 'none' ,
+           info.style.marginBottom = '';
+        }
+      }
+
+      //把数据放入新对象中
+      const obj = {
+        stuId : stuId++,
+        uname:uname.value,
+        age:age.value,
+        gender:gender.value,
+        salary:salary.value,
+        city:city.value
+      }
+      //再把这个对象追加到数组中
+      arr.push(obj)
+      //清空表单的内容   也就是重置
+      this.reset()
+      //调用渲染函数
+      render()
+    })
+
+    //渲染函数，增加，删除都要用，所以封装函数
+    function render(){
+      //清空tbody以前的行 ，相当于每次执行函数，先删除tbody中的内容，然后再将新数组全部追加到tbody中
+      tbody.innerHTML = ''
+      //遍历arr
+      for (let i = 0; i < arr.length; i++) {
+        //创建节点 tr
+        const tr = document.createElement('tr')
+        //给tr内容        //trim()删除前后的空格
+        tr.innerHTML =  `
+          <td>${arr[i].stuId}</td>   
+          <td>${arr[i].uname.trim()}</td>
+          <td>${arr[i].age.trim()}</td>
+          <td>${arr[i].gender}</td>
+          <td>${arr[i].salary.trim()}</td>
+          <td>${arr[i].city}</td>
+          <td>
+            <a href="javascript:" data-id=${i}>删除</a>
+          </td>
+        `
+        //追加元素  也就是把tr的内容在他父亲下显示
+        tbody.appendChild(tr)
+      }
+    }
+
+    //删除的
+    //用事件委托，委托给tbody
+    tbody.addEventListener('click',function(e){
+      if (e.target.tagName === 'A') {
+        //通过给’删除‘添加自定义属性来定位我要删除的是哪行的数据
+        //删除arr数组里的对应的数据
+        arr.splice(e.target.dataset.id , 1)   //从当前点到的行的‘删除’的id删，删1个
+        //重新调用渲染函数 更新下页面显示的内容
+        render()
+      }
+    })
+    
+    
+    
+  </script>
+
+</body>
+
+</html>
